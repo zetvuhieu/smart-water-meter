@@ -1,0 +1,126 @@
+.login{
+    background: url('/assets/img/background1.jpg') no-repeat ;
+    height: 745px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+   width: 50%;
+   display: flex;
+   justify-content: center;
+}
+
+.logo_img{
+    margin-top: 200px;
+    width: 480px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: rgb(2, 12, 19);
+    display: flex;
+    
+ }
+
+.form {
+   width: 50%;
+   display: flex;
+}
+
+.form_wrapper {
+    width: 60%;
+    margin-left: 306px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_box{
+    width: 80%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_box_child {
+   width: 90%;
+   height: 94%;
+   background-color: #fff;
+   border-radius: 16px;
+}
+
+.form_heading {
+    margin-top: 20px;
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_input {
+}
+
+.input_user {
+    width: 85%;
+    height: 40px;
+    border-radius: 6px;
+    margin: 16px 0 0 26px ;
+    border: 1px solid rgb(186, 197, 204);
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+}
+
+.forgot {
+    margin: 4px 0 0 26px ;
+    cursor: pointer;
+}
+
+.login_button {
+   margin-top: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.button {
+    width: 80%;
+    height: 40px;
+    padding: 10px 0;
+    background-color: #2196f3;
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 80px;
+    border: none;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    cursor: pointer;
+}
+
+
+.login_socail {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.social_button {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+
+.social_fb {
+    font-size: 3rem;
+    color: blue;
+    cursor: pointer;
+}
+
+.social_gg {
+    font-size: 3rem;
+    color: red;
+    cursor: pointer;
+}
+
+.social_tw {
+    font-size: 3rem;
+    color: rgb(109, 109, 187);
+    cursor: pointer;
+}
