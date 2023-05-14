@@ -21,6 +21,12 @@ import qr from '~/assets/img/qrcode_www.youtube.com.png';
 const cx = className.bind(styles);
 
 function User() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    };
+
     let navigate = useNavigate();
     function DashBoard() {
         navigate('/dashboard');
@@ -122,6 +128,19 @@ function User() {
                             height: '300px',
                         }}
                     />
+                </div>
+                <div>
+                    <button onClick={togglePopup}>Open Popup</button>
+
+                    {isOpen && (
+                        <div className="popup">
+                            <div className="popup-content">
+                                <h2>Popup Content</h2>
+                                <p>This is the content of the popup.</p>
+                                <button onClick={togglePopup}>Close Popup</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className={cx('footer')}>

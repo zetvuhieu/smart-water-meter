@@ -121,19 +121,19 @@ function MyChart() {
                             <div className={cx('box_heading')}>
                                 <h2 className={cx('box_h2')}> Overall mass water</h2>
                             </div>
-                            <div className={cx('data_value')}></div>
+                            <div className={cx('data_value')}>78 M3</div>
                         </div>
                         <div className={cx('content_box')}>
                             <div className={cx('box_heading')}>
                                 <h2 className={cx('box_h2')}> Total consumption this month</h2>
                             </div>
-                            <div className={cx('data_value')}></div>
+                            <div className={cx('data_value')}>8 M3</div>
                         </div>
                         <div className={cx('content_box')}>
                             <div className={cx('box_heading')}>
                                 <h2 className={cx('box_h2')}> Into money</h2>
                             </div>
-                            <div className={cx('data_value')}></div>
+                            <div className={cx('data_value')}>80,000 vnd</div>
                         </div>
                     </div>
                 </div>

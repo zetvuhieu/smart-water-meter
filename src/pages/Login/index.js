@@ -35,8 +35,11 @@ function Login() {
                                     <a>Forgot password ?</a>
                                 </div>
                             </div>
-                            <div onClick={Login} className={cx('login_button')}>
+                            <div className={cx('login_button')}>
                                 <button className={cx('button')}>Login</button>
+                            </div>
+                            <div onClick={Login} className={cx('login_button')}>
+                                <button className={cx('button')}>Trial</button>
                             </div>
                             <div className={cx('login_socail')}>
                                 <div className={cx('socail_wrapper')}>
