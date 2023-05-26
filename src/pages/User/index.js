@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faFacebookMessenger, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import logo from '~/assets/img/logo.png';
 import avatar from '~/assets/img/ronaldo.jpg';
 import qr from '~/assets/img/qrcode_www.youtube.com.png';
@@ -129,16 +129,18 @@ function User() {
                         }}
                     />
                 </div>
-                <div>
-                    <button onClick={togglePopup}>Open Popup</button>
-
-                    {isOpen && (
-                        <div className="popup">
-                            <div className="popup-content">
+                <div className={cx('popup_message')}>
+                    {isOpen ? (
+                        <div className={cx('popup_content')}>
+                            <div className={cx('popup_content_mes')}>
                                 <h2>Popup Content</h2>
                                 <p>This is the content of the popup.</p>
                                 <button onClick={togglePopup}>Close Popup</button>
                             </div>
+                        </div>
+                    ) : (
+                        <div className={cx('popup_handle')} onClick={togglePopup}>
+                            <FontAwesomeIcon className={cx('icon_li_popup')} icon={faFacebookMessenger} />
                         </div>
                     )}
                 </div>

@@ -19,10 +19,24 @@ import MonthlyChart from '~/pages/chart.js';
 import MonthlyChart2 from '~/pages/chart2.js';
 import logo from '~/assets/img/logo.png';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import firebase from '~/pages/firebase.js';
 
+// import { getDatabase } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
+
+// const database = getDatabase();
 const cx = className.bind(styles);
 
 function MyChart() {
+    const db = getDatabase();
+    const starCountRef = ref(db, '/email');
+    onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        // money = data;
+        // updateStarCount(postElement, data);
+    });
+
     let navigate = useNavigate();
     function Home() {
         navigate('/home');
@@ -133,7 +147,9 @@ function MyChart() {
                             <div className={cx('box_heading')}>
                                 <h2 className={cx('box_h2')}> Into money</h2>
                             </div>
-                            <div className={cx('data_value')}>80,000 vnd</div>
+                            <div className={cx('data_value')} id="money">
+                                80,000 vnd
+                            </div>
                         </div>
                     </div>
                 </div>
