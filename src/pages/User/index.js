@@ -11,14 +11,20 @@ import {
     faTable,
     faUserAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { faFacebook, faFacebookMessenger, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import logo from '~/assets/img/logo.png';
-import avatar from '~/assets/img/ronaldo.jpg';
+import avatar from '~/assets/img/avatar1.jpg';
 import qr from '~/assets/img/qrcode_www.youtube.com.png';
+import firebase from '~/pages/firebase.js';
+import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 const cx = className.bind(styles);
+const db = getDatabase();
+const getInfoUser = ref(db, 'users/1');
+const getData = ref(db, 'data/2023/5');
+const getSpdWater = ref(db, 'data/SpdWater');
 
 function User() {
     const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +48,53 @@ function User() {
         alert('Logout ?');
         navigate('/');
     }
+
+    // updateInfor();
+
+    const [name, setName] = useState('');
+    const [address, setaddress] = useState('');
+    const [id, setid] = useState('');
+    useEffect(() => {
+        onValue(getInfoUser, (snapshot) => {
+            const data = snapshot.val();
+            // console.log(data);
+            setName(data.name);
+            setaddress(data.address);
+            setid(data.id);
+        });
+    }, []);
+
+    // end
+
+    /* tinh tong luong nuoc */
+    const [total, setTotal] = useState('');
+    const [money, setMoney] = useState('');
+
+    useEffect(() => {
+        onValue(getData, (snapshot) => {
+            const dataUse = snapshot.val();
+            // console.log("data mcu");
+            // console.log(dataUse);
+            let sum = 0;
+            for (const key in dataUse) {
+                if (typeof dataUse[key] === 'number') {
+                    sum += dataUse[key];
+                }
+            }
+            setTotal(sum.toString());
+            setMoney(dataUse.money);
+        });
+    }, []);
+
+    //
+    const [SpdWater, setSpdWater] = useState('');
+    useEffect(() => {
+        onValue(getSpdWater, (snapshot) => {
+            const spd = snapshot.val();
+            console.log(spd);
+            setSpdWater(spd.toString());
+        });
+    }, []);
 
     return (
         <div className={cx('home')}>
@@ -98,13 +151,13 @@ function User() {
                             <h2 className={cx('info_heading')}>User Infomation</h2>
                             <div className={cx('info_list')}>
                                 <span className={cx('info_key')}>Fullname: </span>
-                                <span className={cx('info_value')}>Cristiano Ronaldo</span>
+                                <span className={cx('info_value')}>{name}</span>
                                 <br />
                                 <span className={cx('info_key')}>ID: </span>
-                                <span className={cx('info_value')}>24042005 </span>
+                                <span className={cx('info_value')}>{id}</span>
                                 <br />
                                 <span className={cx('info_key')}>Address: </span>
-                                <span className={cx('info_value')}>Go Vap District, Ho Chi Minh City </span>
+                                <span className={cx('info_value')}>{address}</span>
                                 <br />
                             </div>
                         </div>

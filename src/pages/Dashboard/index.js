@@ -13,30 +13,22 @@ import {
     faTable,
     faUserAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MonthlyChart from '~/pages/chart.js';
 import MonthlyChart2 from '~/pages/chart2.js';
 import logo from '~/assets/img/logo.png';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import firebase from '~/pages/firebase.js';
+import { getDatabase, ref, onValue, set } from 'firebase/database';
 
-// import { getDatabase } from 'firebase/database';
-import { getDatabase, ref, onValue } from 'firebase/database';
-
-// const database = getDatabase();
+const db = getDatabase();
+const getInfoUser = ref(db, 'users/1');
+const getData = ref(db, 'data/2023/5');
+const getSpdWater = ref(db, 'data/SpdWater');
 const cx = className.bind(styles);
 
 function MyChart() {
-    const db = getDatabase();
-    const starCountRef = ref(db, '/email');
-    onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log(data);
-        // money = data;
-        // updateStarCount(postElement, data);
-    });
-
     let navigate = useNavigate();
     function Home() {
         navigate('/home');
@@ -81,6 +73,53 @@ function MyChart() {
         { name: 'Nov', Usage: 7, Amount: 70 },
         { name: 'Dec', Usage: 9, Amount: 90 },
     ];
+
+    // updateInfor();
+
+    const [name, setName] = useState('');
+    const [address, setaddress] = useState('');
+    const [id, setid] = useState('');
+    useEffect(() => {
+        onValue(getInfoUser, (snapshot) => {
+            const data = snapshot.val();
+            // console.log(data);
+            setName(data.name);
+            setaddress(data.address);
+            setid(data.id);
+        });
+    }, []);
+
+    // end
+
+    /* tinh tong luong nuoc */
+    const [total, setTotal] = useState('');
+    const [money, setMoney] = useState('');
+
+    useEffect(() => {
+        onValue(getData, (snapshot) => {
+            const dataUse = snapshot.val();
+            // console.log("data mcu");
+            // console.log(dataUse);
+            let sum = 0;
+            for (const key in dataUse) {
+                if (typeof dataUse[key] === 'number') {
+                    sum += dataUse[key];
+                }
+            }
+            setTotal(sum.toString());
+            setMoney(dataUse.money);
+        });
+    }, []);
+
+    //
+    const [SpdWater, setSpdWater] = useState('');
+    useEffect(() => {
+        onValue(getSpdWater, (snapshot) => {
+            const spd = snapshot.val();
+            console.log(spd);
+            setSpdWater(spd.toString());
+        });
+    }, []);
 
     return (
         <div className={cx('dashboard')}>
@@ -135,13 +174,13 @@ function MyChart() {
                             <div className={cx('box_heading')}>
                                 <h2 className={cx('box_h2')}> Overall mass water</h2>
                             </div>
-                            <div className={cx('data_value')}>78 M3</div>
+                            <div className={cx('data_value')}>{total} M3</div>
                         </div>
                         <div className={cx('content_box')}>
                             <div className={cx('box_heading')}>
                                 <h2 className={cx('box_h2')}> Total consumption this month</h2>
                             </div>
-                            <div className={cx('data_value')}>8 M3</div>
+                            <div className={cx('data_value')}>{SpdWater}</div>
                         </div>
                         <div className={cx('content_box')}>
                             <div className={cx('box_heading')}>
