@@ -10,6 +10,7 @@ import {
     faPhone,
     faTable,
     faUserAlt,
+    faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +20,7 @@ import avatar from '~/assets/img/avatar1.jpg';
 import qr from '~/assets/img/qrcode_www.youtube.com.png';
 import firebase from '~/pages/firebase.js';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
+import zalo from '~/assets/img/Screenshot 2023-06-08 140530.png';
 
 const cx = className.bind(styles);
 const db = getDatabase();
@@ -182,18 +184,33 @@ function User() {
                         }}
                     />
                 </div>
-                <div className={cx('popup_message')}>
-                    {isOpen ? (
-                        <div className={cx('popup_content')}>
-                            <div className={cx('popup_content_mes')}>
-                                <h2>Popup Content</h2>
-                                <p>This is the content of the popup.</p>
-                                <button onClick={togglePopup}>Close Popup</button>
-                            </div>
-                        </div>
-                    ) : (
+                <div>
+                    {!isOpen && (
                         <div className={cx('popup_handle')} onClick={togglePopup}>
                             <FontAwesomeIcon className={cx('icon_li_popup')} icon={faFacebookMessenger} />
+                        </div>
+                    )}
+
+                    {isOpen && (
+                        <div>
+                            <div className={cx('popup_overlay')} onClick={togglePopup} />
+                            <div className={cx('popup_message')}>
+                                <div className={cx('popup_content')}>
+                                    <div className={cx('popup_content_mes')}>
+                                        <button className={cx('icon_toggle_xmark')} onClick={togglePopup}>
+                                            <FontAwesomeIcon className={cx('icon_li_xmark')} icon={faXmark} />
+                                        </button>
+                                        <h2>Trò chuyện cùng Leader của chúng tôi</h2>
+                                        <img
+                                            src={zalo}
+                                            style={{
+                                                width: '100px',
+                                                height: '100px',
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>

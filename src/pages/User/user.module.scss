@@ -253,13 +253,6 @@
     padding: 20px 0;
 }
 
-.contact_location {
- 
-}
-
-.contact_mail{
-}
-
 .icon_social {
     color: #fff;
     padding: 0 16px;
@@ -312,16 +305,111 @@
     color: blue;
 }
 
-.popup_handle{
+.popup_message {
     position: fixed;
-}
-
-.icon_li_popup{
-    font-size: 9rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .popup_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+  }
+  
+  .popup_content {
+    position: relative;
+    background-color: #fff;
+    width: 400px;
+    padding: 20px;
+  }
+  
+  .popup_content_mes {
+    text-align: center;
+  }
+  
+  .popup_content_mes h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .popup_content_mes img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .popup_content_mes button {
+    font-size: 16px;
+    margin-top: 0;
+    margin-left: auto;
+    display: block;
+    border: none;
+  }
+  
+  .icon_li_popup {
+    font-size: 8rem;
     color: #2196f3;
-}
+    cursor: pointer;
+  }
+  
+  .icon_li_xmark {
+    font-size: 2.5rem;
+    color: red;
+    cursor: pointer;
+  }
 
-.popup_content{
-    
-    position: fixed;
+
+  /* Thực hiện responsive cho iPhone 12 Pro */
+@media only screen and (max-width: 428px) {
+  .header {
+    height: 50px;
+  }
+
+  .header_logo {
+    width: 40%;
+  }
+
+  .clock_icon {
+    font-size: 2rem;
+  }
+
+  .content_user {
+    width: 300px;
+    height: 500px;
+  }
+
+  .user_avatar {
+    width: 280px;
+    height: 280px;
+  }
+
+  .info_list {
+    margin-left: 10px;
+  }
+
+  .user_project {
+    margin-top: 30px;
+  }
+
+  .user_project_h2 {
+    font-size: 1.2rem;
+  }
+
+  .footer_row {
+    width: 50%;
+  }
+
+  .more_heading {
+    font-size: 1.2rem;
+  }
 }
