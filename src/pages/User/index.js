@@ -141,6 +141,7 @@ function User() {
                     <div className={cx('user_form')}>
                         <div className={cx('user_avatar')}>
                             <img
+                                className={cx('avt_user')}
                                 src={avatar}
                                 style={{
                                     borderRadius: '50%',
