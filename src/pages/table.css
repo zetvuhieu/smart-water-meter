@@ -38,3 +38,54 @@ table {
 .table-body td:first-child {
     font-weight: bold;
 }
+
+
+
+/* Responsive for iPhone 12 Pro */
+@media only screen and (device-width: 390px) {
+    .table_heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .table-container {
+        width: 370px;
+        margin: 0 auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    table {
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+        font-size: 8px;
+    }
+    
+    .table-head {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+    
+    .table-head th,
+    .table-body td {
+        padding: 6px;
+        border: 1px solid #ccc;
+    }
+    
+    .table-body tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .table-body td:first-child {
+        font-weight: bold;
+    }
+    
+  
+  
+  
+  }
+  

@@ -1,0 +1,10 @@
+/* Responsive for iPhone 12 Pro */
+@media only screen and (device-width: 390px) {
+    
+    .monthly-chart-container {
+        display: none;
+      }
+    
+
+  
+  }

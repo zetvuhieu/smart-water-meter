@@ -120,6 +120,10 @@
     justify-content: center;
 }
 
+.content_chart{
+    width: 100px;
+    position: relative;
+}
 
 
 
@@ -336,4 +340,18 @@
   .menu_li_user:hover .user_menu{
       display: block;
   }
-}
+  
+  .content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer {
+      width: 100%;
+  }
+  
+  
+  
+  }
+  
