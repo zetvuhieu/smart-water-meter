@@ -142,7 +142,7 @@
 }
 
 .data_box {
-    width: 60%;
+    width: 80%;
     display: flex;
     justify-content: space-around;
 }
@@ -175,6 +175,59 @@
     font-weight: 600;
     color: #422c2c;
     font-size: 1.6rem;
+}
+
+.box_control{
+    width: 100%;
+    height: 100%;
+}
+
+
+.heading_control {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .control_label {
+  }
+  
+  .control_state {
+    width: 1vh;
+    margin-left: 1vh;
+}
+
+.button_control{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button_ctr{
+    width: 60%;
+    margin-top: 2vh ;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button_handle{
+    width: 30%;
+    height: 5vh;
+    background-color:#fff;
+    border-radius: 1vh;
+    border: 1px solid;
+    color: #2196f3;
+}
+
+.button_handle:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.button_handle:active{
+    color: #fff;
+    background-color: #2196f3;
 }
 
 

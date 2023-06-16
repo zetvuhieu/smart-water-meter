@@ -15,7 +15,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MonthlyChart from '~/pages/chart.js';
 import MonthlyChart2 from '~/pages/chart2.js';
 import logo from '~/assets/img/logo.png';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -43,36 +42,6 @@ function MyChart() {
         alert('Logout ?');
         navigate('/');
     }
-
-    const data = [
-        { month: 'Jan', usage: 5, amount: 50 },
-        { month: 'Feb', usage: 7, amount: 70 },
-        { month: 'Mar', usage: 3, amount: 30 },
-        { month: 'Apr', usage: 7, amount: 70 },
-        { month: 'May', usage: 6, amount: 60 },
-        { month: 'Jun', usage: 8, amount: 80 },
-        { month: 'Jul', usage: 8, amount: 80 },
-        { month: 'Aug', usage: 6, amount: 60 },
-        { month: 'Sep', usage: 7, amount: 70 },
-        { month: 'Oct', usage: 5, amount: 50 },
-        { month: 'Nov', usage: 7, amount: 70 },
-        { month: 'Dec', usage: 9, amount: 90 },
-    ];
-
-    const datas = [
-        { name: 'Jan', Usage: 5, Amount: 50 },
-        { name: 'Feb', Usage: 7, Amount: 70 },
-        { name: 'Mar', Usage: 3, Amount: 30 },
-        { name: 'Apr', Usage: 7, Amount: 70 },
-        { name: 'May', Usage: 6, Amount: 60 },
-        { name: 'Jun', Usage: 8, Amount: 80 },
-        { name: 'Jul', Usage: 8, Amount: 80 },
-        { name: 'Aug', Usage: 6, Amount: 60 },
-        { name: 'Sep', Usage: 7, Amount: 70 },
-        { name: 'Oct', Usage: 5, Amount: 50 },
-        { name: 'Nov', Usage: 7, Amount: 70 },
-        { name: 'Dec', Usage: 9, Amount: 90 },
-    ];
 
     // updateInfor();
 
@@ -121,6 +90,14 @@ function MyChart() {
         });
     }, []);
 
+    const [VanState, setVanState] = useState(false);
+    function onHandle() {
+        setVanState(true);
+    }
+    function offHandle() {
+        setVanState(false);
+    }
+
     return (
         <div className={cx('dashboard')}>
             <div className={cx('header')}>
@@ -165,9 +142,6 @@ function MyChart() {
                 <div className={cx('content_heading')}>
                     <h2>CHART SYSTEM</h2>
                 </div>
-                <div className={cx('content_chart')}>
-                    <MonthlyChart data={data} />
-                </div>
                 <div className={cx('content_data')}>
                     <div className={cx('data_box')}>
                         <div className={cx('content_box')}>
@@ -190,10 +164,28 @@ function MyChart() {
                                 80,000 vnd
                             </div>
                         </div>
+                        <div className={cx('content_box')}>
+                            <div className={cx('box_control')}>
+                                <div className={cx('heading_control')}>
+                                    <span className={cx('box_h2')}>Trạng thái van :</span>
+                                    <div className={cx('control_state')}>{VanState ? 'On' : 'Off'}</div>
+                                </div>
+                                <div className={cx('button_control')}>
+                                    <div className={cx('button_ctr')}>
+                                        <button className={cx('button_handle')} onClick={onHandle}>
+                                            On
+                                        </button>
+                                        <button className={cx('button_handle')} onClick={offHandle}>
+                                            Off
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className={cx('content_chart2')}>
-                    <MonthlyChart2 data={datas} />
+                    <MonthlyChart2 />
                 </div>
             </div>
             <div className={cx('footer')}>

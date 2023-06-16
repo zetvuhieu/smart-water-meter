@@ -1,21 +1,27 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import './chart2.css';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-const MonthlyChart = ({ data }) => {
+function MyComponent() {
+    const data = {
+        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+        data: [150, 150, 80, 200, 160, 145, 190, 150, 176, 135, 156, 146, 126, 159, 160],
+    };
+
     return (
-        <ResponsiveContainer width={1400} height={400} className="monthly-chart-container">
-            <LineChart data={data} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
-                <XAxis dataKey="name" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="Usage" stroke="blue" activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="Amount" stroke="red" />
-            </LineChart>
-        </ResponsiveContainer>
+        <LineChart
+            width={1300}
+            height={300}
+            data={data.labels.map((label, index) => ({ label, LuuLuongNuoc: data.data[index] }))}
+        >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="label" />
+            <YAxis label={{ value: 'luu luong nuoc', angle: -90, potision: 'outsideRight' }} domain={[0, 250]} />
+            {/* <YAxis label={{ value: "Lượng nước tiêu thụ (m3)", angle: -90, position: "insideLeft" }} domain={[0, maxValue]} /> */}
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="LuuLuongNuoc" stroke="#8884d8" activeDot={{ r: 8 }} />
+        </LineChart>
     );
-};
+}
 
-export default MonthlyChart;
+export default MyComponent;
