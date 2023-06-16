@@ -3,7 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 
 function MyComponent() {
     const data = {
-        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17'],
         data: [150, 150, 80, 200, 160, 145, 190, 150, 176, 135, 156, 146, 126, 159, 160],
     };
 
