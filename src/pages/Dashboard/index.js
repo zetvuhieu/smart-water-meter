@@ -23,8 +23,10 @@ import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 const db = getDatabase();
 const getInfoUser = ref(db, 'users/1');
-const getData = ref(db, 'data/2023/5');
-const getSpdWater = ref(db, 'data/SpdWater');
+// const getData = ref(db, "Data/2023/5");   //data cu
+const getData = ref(db, 'Data/TheTichHienTai/2');
+const getMoney = ref(db, 'Data/ThanhTienHienTai/2');
+const getSpdWater = ref(db, 'Data/TocDoDongChay/2');
 const cx = className.bind(styles);
 
 function MyChart() {
@@ -43,8 +45,6 @@ function MyChart() {
         navigate('/');
     }
 
-    // updateInfor();
-
     const [name, setName] = useState('');
     const [address, setaddress] = useState('');
     const [id, setid] = useState('');
@@ -62,30 +62,39 @@ function MyChart() {
 
     /* tinh tong luong nuoc */
     const [total, setTotal] = useState('');
-    const [money, setMoney] = useState('');
 
     useEffect(() => {
         onValue(getData, (snapshot) => {
             const dataUse = snapshot.val();
             // console.log("data mcu");
             // console.log(dataUse);
-            let sum = 0;
-            for (const key in dataUse) {
-                if (typeof dataUse[key] === 'number') {
-                    sum += dataUse[key];
-                }
-            }
-            setTotal(sum.toString());
-            setMoney(dataUse.money);
+            // let sum = 0;
+            // for (const key in dataUse) {
+            //   if (typeof dataUse[key] === "number") {
+            //     sum += dataUse[key];
+            //   }
+            // }
+            // setTotal(sum.toString());
+            // setMoney(dataUse.money);
+            setTotal(dataUse);
         });
     }, []);
 
+    const [money, setMoney] = useState('');
+    useEffect(() => {
+        onValue(getMoney, (snapshot) => {
+            const __money = snapshot.val();
+            // console.log("money")
+            // console.log(__money);
+            setMoney(__money);
+        });
+    }, []);
     //
     const [SpdWater, setSpdWater] = useState('');
     useEffect(() => {
         onValue(getSpdWater, (snapshot) => {
             const spd = snapshot.val();
-            console.log(spd);
+            // console.log(spd);
             setSpdWater(spd.toString());
         });
     }, []);

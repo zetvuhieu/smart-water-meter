@@ -15,7 +15,7 @@ function MyComponent() {
         >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="label" />
-            <YAxis label={{ value: 'luu luong nuoc', angle: -90, potision: 'outsideRight' }} domain={[0, 250]} />
+            <YAxis label={{ value: 'luu luong nuoc', angle: -90, position: 'insideLeft' }} domain={[0, 250]} />
             {/* <YAxis label={{ value: "Lượng nước tiêu thụ (m3)", angle: -90, position: "insideLeft" }} domain={[0, maxValue]} /> */}
             <Tooltip />
             <Legend />
